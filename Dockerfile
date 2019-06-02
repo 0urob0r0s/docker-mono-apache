@@ -1,6 +1,6 @@
-FROM mono
+FROM mono:latest
  
-MAINTAINER Seif Attar <iam@seifattar.net>
+MAINTAINER JAGM
 
 RUN apt-get update \
         && apt-get update \
