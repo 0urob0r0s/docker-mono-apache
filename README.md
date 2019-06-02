@@ -1,22 +1,29 @@
-## Run mono web applications with apacke mod_mono
+# MONO Web Node
+ 
+**Overview**
 
-This repository contains Dockerfile for publishing Docker's automated build to the public [Docker Hub Registry](https://registry.hub.docker.com/).
+This Dockerfile builds a Debian based MONO + Apache Web node.
+Designed as a standard image for the publishing step of a jenkins pipeline.
 
-> Apache is exposed from the container on port 80 and the mono-fastcgi-server4 loads the application from /var/www.
+**Features**
+
+- Based on The latest Docker Mono release (at the time of writing) is: v5.20.1
+- Compatible with Auto-scaling services.
+- Uses Apache mod_mono with port 80 exposed, the mono-fastcgi-server4 loads the application from /var/www.
 
 ### Base docker image
 
-    debian/jessie
+    mono:latest
 
 ### Usage
 
 First you need to pull the image:
 
-    docker pull seif/docker-mono-apache
+    docker pull 0urob0r0s/docker-mono-apache
 
-Then build your project, create a Dockerfile, copy the application to /var/www and start runit:
+Then build your project > create a Dockerfile > copy the application to /var/www
 
-    FROM seif/docker-mono-apache
+    FROM 0urob0r0s/docker-mono-apache
     ADD buildOutput/website /var/www/
     CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
